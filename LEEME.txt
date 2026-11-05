@@ -1,0 +1,80 @@
+Aurora Optimizer 0.1.0
+======================
+
+Requisitos
+----------
+- Minecraft 26.2 (Fabric)
+- Fabric Loader 0.20.1 o superior
+- Fabric API 0.161.0+26.2
+- Java 25
+
+Instalacion
+-----------
+1. Copia Aurora-0.1.0.jar en la carpeta mods de tu instalacion de Fabric.
+2. Copia Fabric API para 26.2 en mods.
+3. Opcional recomendado: Sodium (terreno) y Voxy (LOD lejano).
+4. Inicia el cliente. La configuracion se crea en config/aurora.json.
+
+Idiomas
+-------
+La interfaz del mod esta en espanol e ingles en el mismo jar. Cambia el
+idioma en Options > Language; los comandos /aurora y los mensajes usan
+automaticamente es_es o en_us. El README completo en ingles esta en
+README.en.md.
+
+El jar unificado ya incluye como mods anidados:
+Lithium, FerriteCore, MoreCulling, Cloth Config, Rail Optimization,
+ImmediatelyFast, BadOptimizations, Clumps y Cubes Without Borders. No los
+instales por separado.
+
+Cubes Without Borders anade pantalla completa sin bordes (borderless o
+windowed) y se configura en Video Settings o en config/cwb.json. Es una
+utilidad de ventana: no promete mas FPS y solo conflictua con otros mods de
+pantalla completa, ninguno incluido aqui.
+
+Sodium y Voxy no se incluyen por licencia (Polyform Shield y All Rights
+Reserved). Se instalan aparte.
+
+Si quieres que Sodium sea obligatorio en el propio jar, usa
+Aurora-0.1.0-sodium.jar (build -PsodiumProfile). Es solo cliente, exige
+Sodium >= 0.9.2 y tampoco lo empaqueta: instala Sodium aparte.
+
+Comandos
+--------
+/aurora status                 Estado de memoria, LOD, FPS y hooks
+/aurora lod on|off|auto|voxy   Control del LOD
+/aurora lod worldgen on|off    LOD por delante (solo singleplayer)
+/aurora particles <0-20000>    Limite de particulas
+/aurora entities <16-512>      Distancia de culling de entidades
+/aurora trim                   Limpiar caches ahora
+/aurora reload                 Recargar config/aurora.json
+/aurora compat                 Mods de rendimiento detectados
+/aurora bench [1-60]           Medir FPS y ms/frame
+/aurora help                   Ayuda
+
+Nota honesta
+------------
+Aurora no sustituye el pipeline de terreno de Sodium. En terreno, Sodium es
+mas rapido (medido el 2026-10-30: 743.7 FPS frente a 708.5 FPS; control final
+754.8, deriva +1.5%). Aurora aporta memoria acotada, culling de entidades,
+LOD lejano, extras y API de addons. En una escena de 1.350 entidades, el
+culling subio de 756.9 a 923.6 FPS (+22.0%) con Sodium en ambas corridas.
+
+El LOD de Aurora es geometria de color, no texturizada como Voxy. En
+singleplayer, lodWorldgen=true genera un anillo por delante usando el
+generador del servidor integrado, sin cargar chunks completos. En
+multijugador solo captura chunks ya cargados. El worldgen esta desactivado
+por defecto porque cuesta FPS: la configuracion conservadora (radio 18,
+lote 4, 12k quads) dio 596.8 FPS (-19.8% frente a Sodium-on); la agresiva
+(radio 20, lote 8, 60k quads) dio 349.8 FPS (-53%).
+
+Con lodMode=auto cede el LOD a Voxy o Sodium si estan instalados; usa
+lodMode=aurora para forzarlo. Con Sodium el LOD si se dibuja, pero auto lo
+cede por coste. Con Sodium y auto, /aurora status reporta LOD=0 chunks/0 B.
+El LOD capturado cuesta ~2-3.6%; el worldgen conservador ~20%. No son
+mejoras gratuitas de FPS: son funciones de contexto.
+
+Al salir del mundo, el leak guard suelta chunks, limpia tint caches y
+elimina entidades del nivel. La prueba real solto 1.681 chunks.
+
+Licencia MIT. Ver LICENSE y THIRD_PARTY_NOTICES.md.

@@ -1,0 +1,25 @@
+# Fabric / Gradle / Compilación
+.gradle/
+build/
+.gradle-architecture-test/
+
+# Entorno de ejecución de Minecraft (Pruebas)
+run/
+runClient/
+runServer/
+runData/
+logs/
+saves/
+resourcepacks/
+options.txt
+usercache.json
+usernamecache.json
+
+# VS Code (Configuraciones locales y cachés)
+.vscode/
+.vscode-test/
+*.code-workspace
+
+# Archivos del sistema operativo
+.DS_Store
+Thumbs.db

@@ -1,0 +1,18 @@
+﻿BUNDLE=Bundle 26.2 -> Lithium=true | FerriteCore=true | MoreCulling=true | ClothConfig=true | RailOptimization=true | ImmediatelyFast=true | BadOptimizations=true | Clumps=true | CubesWithoutBorders=true
+STATUS=Estado /aurora: heap=681,0 MB / 7,9 GB | directo=1,8 MB | LOD=0 chunks/0 B | quads=0 | worldgen=0 chunks/0 muestras | leaks: niveles=0, entidades=0, chunks=0 | hooks=entidades, particulas, nivel, render
+SCREENSHOTS=bench/screenshots/bundle-compat.png, bench/screenshots/bundle-status.png
+ERRORS:
+[22:35:10] [Download-2/ERROR] (Minecraft) Failed to fetch user properties
+com.mojang.authlib.exceptions.InvalidCredentialsException: Status: 401
+	at knot//com.mojang.authlib.exceptions.MinecraftClientHttpException.toAuthenticationException(MinecraftClientHttpException.java:70)
+Caused by: MinecraftClientHttpException[type=HTTP_ERROR, status=401, response=ErrorResponse[path=/player/attributes, error=null, errorMessage=null, details=null]]
+	at knot//com.mojang.authlib.minecraft.client.MinecraftClient.buildHttpException(MinecraftClient.java:170)
+[22:35:13] [Download-1/INFO] (Minecraft) Could not authorize you against Realms server: java.lang.RuntimeException: Failed to parse into SignedJWT: FabricMC
+[22:35:13] [Download-1/ERROR] (Minecraft) Failed to fetch Realms feature flags
+com.mojang.realmsclient.exception.RealmsServiceException: Realms authentication error with message 'java.lang.RuntimeException: Failed to parse into SignedJWT: FabricMC'
+[22:35:17] [Render thread/WARN] (Minecraft) Error reading pack metadata, attempting fallback type
+com.google.gson.JsonParseException: Pack declares support for version newer than 81, but is missing mandatory fields min_format and max_format
+	at knot//com.mojang.serialization.DataResult$Error.getOrThrow(DataResult.java:287)
+[22:35:26] [Download-1/ERROR] (Minecraft) Failed to retrieve profile key pair
+MinecraftClientHttpException[type=HTTP_ERROR, status=401, response=ErrorResponse[path=/player/certificates, error=null, errorMessage=null, details=null]]
+	at knot//com.mojang.authlib.minecraft.client.MinecraftClient.buildHttpException(MinecraftClient.java:170)

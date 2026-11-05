@@ -1,0 +1,3 @@
+﻿CLEANUP=entities
+SCREENSHOT=cleanup-entities.png
+STATUS=Estado /aurora: heap=892,1 MB / 7,9 GB | directo=2,5 MB | LOD=0 chunks/0 B | quads=0 | hooks=entidades, particulas, nivel, render

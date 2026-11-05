@@ -1,0 +1,20 @@
+﻿LANG=en_us
+OPTIONS_LANG=lang:en_us
+HELP_SCREENSHOT=bench/screenshots/lang-en_us-help.png
+STATUS_SCREENSHOT=bench/screenshots/lang-en_us-status.png
+STATUS_LOG=Estado /aurora: heap=538.0 MB / 7.9 GB | directo=1.6 MB | LOD=0 chunks/0 B | quads=0 | worldgen=0 chunks/0 muestras | leaks: niveles=0, entidades=0, chunks=0 | hooks=entidades, particulas, nivel, render
+ERRORS:
+[01:16:18] [Download-2/ERROR] (Minecraft) Failed to fetch user properties
+com.mojang.authlib.exceptions.InvalidCredentialsException: Status: 401
+	at knot//com.mojang.authlib.exceptions.MinecraftClientHttpException.toAuthenticationException(MinecraftClientHttpException.java:70)
+Caused by: MinecraftClientHttpException[type=HTTP_ERROR, status=401, response=ErrorResponse[path=/player/attributes, error=null, errorMessage=null, details=null]]
+	at knot//com.mojang.authlib.minecraft.client.MinecraftClient.buildHttpException(MinecraftClient.java:170)
+[01:16:19] [Download-2/INFO] (Minecraft) Could not authorize you against Realms server: java.lang.RuntimeException: Failed to parse into SignedJWT: FabricMC
+[01:16:19] [Download-2/ERROR] (Minecraft) Failed to fetch Realms feature flags
+com.mojang.realmsclient.exception.RealmsServiceException: Realms authentication error with message 'java.lang.RuntimeException: Failed to parse into SignedJWT: FabricMC'
+[01:16:22] [Render thread/WARN] (Minecraft) Error reading pack metadata, attempting fallback type
+com.google.gson.JsonParseException: Pack declares support for version newer than 81, but is missing mandatory fields min_format and max_format
+	at knot//com.mojang.serialization.DataResult$Error.getOrThrow(DataResult.java:287)
+[01:16:27] [Download-2/ERROR] (Minecraft) Failed to retrieve profile key pair
+MinecraftClientHttpException[type=HTTP_ERROR, status=401, response=ErrorResponse[path=/player/certificates, error=null, errorMessage=null, details=null]]
+	at knot//com.mojang.authlib.minecraft.client.MinecraftClient.buildHttpException(MinecraftClient.java:170)

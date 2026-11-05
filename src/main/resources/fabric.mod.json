@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "id": "aurora",
+  "version": "${version}",
+  "name": "Aurora Optimizer",
+  "description": "Memory and rendering optimization for Minecraft: RAM leaks, culling, far LOD and a unified open-source bundle. Optimizacion de memoria y renderizado: fugas de RAM, culling, LOD lejano y bundle open source. UI en espanol e ingles (sigue el idioma del juego).",
+  "authors": [
+    "Aurora"
+  ],
+  "license": "MIT",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "dev.aurora.optimizer.Aurora"
+    ],
+    "client": [
+      "dev.aurora.optimizer.client.AuroraClient"
+    ]
+  },
+  "mixins": [
+    {
+      "config": "aurora.mixins.json",
+      "environment": "client"
+    }
+  ],
+  "depends": {
+    "fabricloader": ">=0.20.1",
+    "minecraft": ">=26.2 <26.4",
+    "java": ">=25",
+    "fabric-api": "*"
+  },
+  "recommends": {
+    "sodium": "*",
+    "voxy": "*"
+  },
+  "custom": {
+    "aurora:bundle": [
+      "lithium",
+      "ferritecore",
+      "moreculling",
+      "cloth-config",
+      "railoptimization",
+      "immediatelyfast",
+      "badoptimizations",
+      "clumps",
+      "cwb"
+    ]
+  }
+}

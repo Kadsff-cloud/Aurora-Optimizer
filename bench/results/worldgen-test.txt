@@ -1,0 +1,6 @@
+﻿STATUS=Estado /aurora: heap=620,8 MB / 7,9 GB | directo=1,4 MB | LOD=141 chunks/61,7 KB | quads=14184 | worldgen=144 chunks/9216 muestras | leaks: niveles=0, entidades=0, chunks=0 | hooks=entidades, particulas, nivel, render
+WORLDGEN_START=LOD worldgen: generando anillos 17..20 en singleplayer, lote 8 chunk(s)/tick
+FIRST_GENERATED=LOD worldgen: primer chunk generado en (-55, -17), cache 1 chunks / 448 B
+LOD_CAPTURE=
+LEAK_GUARD=
+ERRORS=Exception: Failed to parse into SignedJWT: FabricMC | Exception: Realms authentication error with message 'java.lang.RuntimeException: Failed to parse into SignedJWT: FabricMC' | Exception: Pack declares support for version newer than 81, but is missing mandatory fields min_format and max_format | Exception[type=HTTP_ERROR, status=401, response=ErrorResponse[path=/player/certificates, error=null, errorMessage=null, details=null]] | Exception(MinecraftClient.java:170)

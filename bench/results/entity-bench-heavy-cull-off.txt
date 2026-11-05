@@ -1,0 +1,9 @@
+﻿LABEL=heavy-cull-off
+MODE=sodium-off
+SODIUM=True
+SCENE=-600,140,0 yaw=270 pitch=0
+WARMUP=45
+SECONDS=20
+RESULT=Aurora bench: 756.9 FPS medio (min 538, max 816) | 1.32 ms/frame | 400 muestras | heap 1,1 GB / 7,9 GB | directo 2,3 MB
+STATUS=Estado /aurora: heap=649,3 MB / 7,9 GB | directo=1,6 MB | LOD=0 chunks/0 B | quads=0 | hooks=entidades, particulas, nivel, render
+SCREENSHOT=D:\OpenCode\entity-bench-heavy-cull-off.png

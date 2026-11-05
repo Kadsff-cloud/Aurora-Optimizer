@@ -1,0 +1,9 @@
+﻿LABEL=ab-sodium-lod-captured
+MODE=sodium-lod-captured
+SODIUM=True
+SCENE=-600,0 yaw=270 pitch=25
+WARMUP=60
+SECONDS=30
+RESULT=Aurora bench: 727.4 FPS medio (min 553, max 744) | 1.37 ms/frame | 600 muestras | heap 914,2 MB / 7,9 GB | directo 2,7 MB
+STATUS=Estado /aurora: heap=1,1 GB / 7,9 GB | directo=3,2 MB | LOD=60 chunks/26,3 KB | quads=1498 | worldgen=0 chunks/0 muestras | leaks: niveles=0, entidades=0, chunks=0 | hooks=entidades, particulas, nivel, render
+SCREENSHOT=D:\OpenCode\bench-ab-sodium-lod-captured.png

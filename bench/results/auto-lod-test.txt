@@ -1,0 +1,3 @@
+﻿STATUS=Estado /aurora: heap=943,5 MB / 7,9 GB | directo=3,0 MB | LOD=0 chunks/0 B | quads=0 | hooks=entidades, particulas, nivel, render
+SODIUM=Sodium detectado: en lodMode=auto Aurora cede el LOD y deja el terreno a Sodium; usa lodMode=aurora para forzar el LOD propio.
+LOD_CAPTURE=

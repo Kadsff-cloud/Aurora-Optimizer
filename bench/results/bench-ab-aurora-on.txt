@@ -1,0 +1,9 @@
+﻿LABEL=ab-aurora-on
+MODE=aurora-on
+SODIUM=False
+SCENE=-600,0 yaw=270 pitch=25
+WARMUP=60
+SECONDS=30
+RESULT=Aurora bench: 708.5 FPS medio (min 515, max 752) | 1.41 ms/frame | 600 muestras | heap 726,2 MB / 7,9 GB | directo 1,6 MB
+STATUS=Estado /aurora: heap=971,7 MB / 7,9 GB | directo=2,0 MB | LOD=0 chunks/0 B | quads=0 | worldgen=0 chunks/0 muestras | leaks: niveles=0, entidades=0, chunks=0 | hooks=entidades, particulas, nivel, render
+SCREENSHOT=D:\OpenCode\bench-ab-aurora-on.png
