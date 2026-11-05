@@ -1,0 +1,137 @@
+plugins {
+    id 'net.fabricmc.fabric-loom' version "${loom_version}"
+    id 'java'
+}
+
+version = project.mod_version
+group = project.maven_group
+
+base {
+    archivesName = 'Aurora'
+}
+
+def sodiumProfile = project.hasProperty('sodiumProfile')
+
+repositories {
+    mavenCentral()
+    // Modrinth Maven: usado para el bundle unificado (Jar-in-Jar).
+    maven {
+        name = 'Modrinth'
+        url = 'https://api.modrinth.com/maven'
+        content {
+            includeGroup 'maven.modrinth'
+        }
+    }
+}
+
+// Permite probar la carga de un mundo sin tocar el menu:
+//   gradlew runClient -PquickPlayWorld=AuroraTest
+if (project.hasProperty('quickPlayWorld')) {
+    loom.runs.client.programArgs '--quickPlaySingleplayer', project.property('quickPlayWorld').toString()
+}
+if (project.hasProperty('benchWidth') && project.hasProperty('benchHeight')) {
+    loom.runs.client.programArgs '--width', project.property('benchWidth').toString(),
+            '--height', project.property('benchHeight').toString()
+}
+
+dependencies {
+    minecraft "com.mojang:minecraft:${project.minecraft_version}"
+    implementation "net.fabricmc:fabric-loader:${project.loader_version}"
+    implementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
+
+    // --- Bundle unificado 26.2 (Jar-in-Jar) ---
+    // Cada mod conserva su propio id, licencia y codigo. Aurora solo los
+    // empaqueta y coordina la compatibilidad; no fusiona su codigo fuente.
+    // Versiones verificadas contra la API de Modrinth el 2026-10-30.
+    implementation "maven.modrinth:gvQqBUqZ:f7vZ0VWU"   // Lithium 0.25.3+mc26.2 (LGPL-3.0)
+    implementation "maven.modrinth:uXXizFIs:d5ddUdiB"   // FerriteCore 9.0.0-fabric (MIT)
+    implementation "maven.modrinth:51shyZVL:D5oVCouK"   // MoreCulling 1.8.1 (GPL-3.0)
+    implementation "maven.modrinth:9s6osm5g:Nv3xnWXd"   // Cloth Config 26.2.155 (LGPL-3.0)
+    implementation "maven.modrinth:QSvN5pBU:QQzYehRo"   // Rail Optimization 2.0 (GPL-3.0)
+    implementation "maven.modrinth:5ZwdcRci:pMWERcSu"   // ImmediatelyFast 1.16.5+26.2 (LGPL-3.0-or-later)
+    implementation "maven.modrinth:g96Z4WVZ:JmPs4Wie"   // BadOptimizations 2.4.1 (MIT)
+    implementation "maven.modrinth:Wnxd13zP:dEMopoOJ"   // Clumps 26.2.1 (MIT)
+    implementation "maven.modrinth:ETlrkaYF:ZM0HUAhK"   // Cubes Without Borders 5.0.0+26.2 (MIT, cliente)
+
+    // Perfil de rendimiento cliente: Sodium pasa a ser dependencia obligatoria
+    // del jar, pero NO se empaqueta (Polyform Shield 1.0.0). El jar comun sigue
+    // funcionando sin Sodium y el servidor no lo necesita.
+    if (sodiumProfile) {
+        implementation "maven.modrinth:AANobbMI:xJZxADzI" // Sodium 0.9.2+mc26.2
+    }
+
+    if (!project.hasProperty('coreOnly')) {
+        include "maven.modrinth:gvQqBUqZ:f7vZ0VWU"
+        include "maven.modrinth:uXXizFIs:d5ddUdiB"
+        include "maven.modrinth:51shyZVL:D5oVCouK"
+        include "maven.modrinth:9s6osm5g:Nv3xnWXd"
+        include "maven.modrinth:QSvN5pBU:QQzYehRo"
+        include "maven.modrinth:5ZwdcRci:pMWERcSu"
+        include "maven.modrinth:g96Z4WVZ:JmPs4Wie"
+        include "maven.modrinth:Wnxd13zP:dEMopoOJ"
+        include "maven.modrinth:ETlrkaYF:ZM0HUAhK"
+    }
+
+    testImplementation platform('org.junit:junit-bom:5.11.4')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+processResources {
+    inputs.property 'version', project.version
+    inputs.property 'sodiumProfile', sodiumProfile
+    filesMatching('fabric.mod.json') {
+        expand version: project.version
+    }
+    // El perfil Sodium cambia el metadata del mismo jar: cliente-only y con
+    // Sodium como dependencia dura. Se hace despues de expand para no romper
+    // el JSON con valores vacios.
+    doLast {
+        if (!sodiumProfile) {
+            return
+        }
+        def metadata = layout.buildDirectory.file('resources/main/fabric.mod.json').get().asFile
+        if (!metadata.exists()) {
+            return
+        }
+        def text = metadata.getText('UTF-8')
+        text = text.replace('"environment": "*"', '"environment": "client"')
+        text = text.replace('"fabric-api": "*"',
+                '"fabric-api": "*",\n    "sodium": ">=0.9.2"')
+        metadata.setText(text, 'UTF-8')
+    }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+    options.release = 25
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(25)
+    }
+    withSourcesJar()
+}
+
+test {
+    useJUnitPlatform()
+}
+
+jar {
+    if (sodiumProfile) {
+        archiveClassifier = 'sodium'
+    } else if (project.hasProperty('coreOnly')) {
+        archiveClassifier = 'core'
+    }
+    from('LICENSE') {
+        rename { "${it}_aurora" }
+    }
+    from('THIRD_PARTY_NOTICES.md')
+    from('LICENSES') {
+        into 'META-INF/licenses'
+    }
+    // Los jars del bundle se anaden automaticamente a META-INF/jars por la
+    // configuracion `include` de Loom. -PcoreOnly genera un jar solo con el
+    // codigo MIT de Aurora; -PsodiumProfile genera el perfil cliente Sodium.
+}

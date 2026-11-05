@@ -1,0 +1,14 @@
+{
+  "required": true,
+  "minVersion": "0.8.7",
+  "package": "dev.aurora.optimizer.mixin",
+  "compatibilityLevel": "JAVA_25",
+  "client": [
+    "ClientLevelMixin",
+    "EntityRenderDispatcherMixin",
+    "ParticleEngineMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

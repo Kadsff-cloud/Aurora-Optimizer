@@ -1,0 +1,9 @@
+﻿LABEL=ab-sodium-lod-worldgen-conservative
+MODE=sodium-lod-worldgen-conservative
+SODIUM=True
+SCENE=-600,0 yaw=270 pitch=25
+WARMUP=60
+SECONDS=30
+RESULT=Aurora bench: 596.8 FPS medio (min 369, max 667) | 1.68 ms/frame | 600 muestras | heap 761,1 MB / 7,9 GB | directo 1,8 MB
+STATUS=Estado /aurora: heap=642,1 MB / 7,9 GB | directo=1,6 MB | LOD=280 chunks/122,5 KB | quads=11031 | worldgen=284 chunks/18176 muestras | leaks: niveles=0, entidades=0, chunks=0 | hooks=entidades, particulas, nivel, render
+SCREENSHOT=D:\OpenCode\bench-ab-sodium-lod-worldgen-conservative.png

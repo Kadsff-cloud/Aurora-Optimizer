@@ -1,0 +1,65 @@
+﻿LABEL=ab-aurora-on
+MODE=aurora-on
+SODIUM=False
+SCENE=-600,0 yaw=270 pitch=25
+WARMUP=60
+SECONDS=30
+RESULT=Aurora bench: 708.5 FPS medio (min 515, max 752) | 1.41 ms/frame | 600 muestras | heap 726,2 MB / 7,9 GB | directo 1,6 MB
+STATUS=Estado /aurora: heap=971,7 MB / 7,9 GB | directo=2,0 MB | LOD=0 chunks/0 B | quads=0 | worldgen=0 chunks/0 muestras | leaks: niveles=0, entidades=0, chunks=0 | hooks=entidades, particulas, nivel, render
+SCREENSHOT=D:\OpenCode\bench-ab-aurora-on.png
+
+
+LABEL=ab-sodium-off
+MODE=sodium-off
+SODIUM=True
+SCENE=-600,0 yaw=270 pitch=25
+WARMUP=60
+SECONDS=30
+RESULT=Aurora bench: 753.2 FPS medio (min 608, max 769) | 1.33 ms/frame | 600 muestras | heap 591,6 MB / 7,9 GB | directo 1,3 MB
+STATUS=Estado /aurora: heap=853,4 MB / 7,9 GB | directo=3,3 MB | LOD=0 chunks/0 B | quads=0 | worldgen=0 chunks/0 muestras | leaks: niveles=0, entidades=0, chunks=0 | hooks=entidades, particulas, nivel, render
+SCREENSHOT=D:\OpenCode\bench-ab-sodium-off.png
+
+
+LABEL=ab-sodium-on
+MODE=sodium-on
+SODIUM=True
+SCENE=-600,0 yaw=270 pitch=25
+WARMUP=60
+SECONDS=30
+RESULT=Aurora bench: 743.7 FPS medio (min 600, max 766) | 1.34 ms/frame | 600 muestras | heap 1,3 GB / 7,9 GB | directo 6,2 MB
+STATUS=Estado /aurora: heap=1,3 GB / 7,9 GB | directo=6,6 MB | LOD=0 chunks/0 B | quads=0 | worldgen=0 chunks/0 muestras | leaks: niveles=0, entidades=0, chunks=0 | hooks=entidades, particulas, nivel, render
+SCREENSHOT=D:\OpenCode\bench-ab-sodium-on.png
+
+
+LABEL=ab-sodium-lod-captured
+MODE=sodium-lod-captured
+SODIUM=True
+SCENE=-600,0 yaw=270 pitch=25
+WARMUP=60
+SECONDS=30
+RESULT=Aurora bench: 727.4 FPS medio (min 553, max 744) | 1.37 ms/frame | 600 muestras | heap 914,2 MB / 7,9 GB | directo 2,7 MB
+STATUS=Estado /aurora: heap=1,1 GB / 7,9 GB | directo=3,2 MB | LOD=60 chunks/26,3 KB | quads=1498 | worldgen=0 chunks/0 muestras | leaks: niveles=0, entidades=0, chunks=0 | hooks=entidades, particulas, nivel, render
+SCREENSHOT=D:\OpenCode\bench-ab-sodium-lod-captured.png
+
+
+LABEL=ab-sodium-lod-worldgen
+MODE=sodium-lod-worldgen
+SODIUM=True
+SCENE=-600,0 yaw=270 pitch=25
+WARMUP=60
+SECONDS=30
+RESULT=Aurora bench: 349.8 FPS medio (min 229, max 383) | 2.86 ms/frame | 600 muestras | heap 538,6 MB / 7,9 GB | directo 1,5 MB
+STATUS=Estado /aurora: heap=479,7 MB / 7,9 GB | directo=1,4 MB | LOD=518 chunks/226,6 KB | quads=23779 | worldgen=528 chunks/33792 muestras | leaks: niveles=0, entidades=0, chunks=0 | hooks=entidades, particulas, nivel, render
+SCREENSHOT=D:\OpenCode\bench-ab-sodium-lod-worldgen.png
+
+
+LABEL=ab-sodium-on-control
+MODE=sodium-on
+SODIUM=True
+SCENE=-600,0 yaw=270 pitch=25
+WARMUP=60
+SECONDS=30
+RESULT=Aurora bench: 754.8 FPS medio (min 591, max 773) | 1.32 ms/frame | 600 muestras | heap 764,6 MB / 7,9 GB | directo 1,4 MB
+STATUS=Estado /aurora: heap=947,7 MB / 7,9 GB | directo=1,4 MB | LOD=0 chunks/0 B | quads=0 | worldgen=0 chunks/0 muestras | leaks: niveles=0, entidades=0, chunks=0 | hooks=entidades, particulas, nivel, render
+SCREENSHOT=D:\OpenCode\bench-ab-sodium-on-control.png
+
